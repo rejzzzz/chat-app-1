@@ -1,12 +1,17 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcryptjs";
-import generateJWToken from "./../lib/utils.js"
+import generateJWToken from "../lib/utils.js"
 
 export const signup = async (req, res)=>{
 
     const {firstName, lastName, email, userName, password} = req.body;
 
     try {
+
+        if(!firstName || !email || !userName || !password){
+            return res.status(400).json({message: "please fill all necessary fields, like First Name, email, userName, password"});
+        }
+        
         if(password.length < 8){
             return res.status(400).json({message: "Password must be atleast 8 characters"});
         }
@@ -64,14 +69,4 @@ export const signup = async (req, res)=>{
         res.status(500).json({message: "Server crashed"});
         
     }
-};
-
-
-export const login = (req, res)=>{
-    res.send("login route");
-};
-
-
-export const logout = (req, res)=>{
-    res.send("logout route");
 };

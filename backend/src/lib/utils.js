@@ -15,6 +15,7 @@ const generateJWToken= (userId, res) => { /** might have to change userId to use
         httpOnly: true, // prevents from XSS attacks
         secure: process.env.NODE_ENV !== "development", // ensures cookies are only sent over HTTPS
         sameSite: 'Strict', // prevents CSRF
+        path: "/"
 
     });
 
