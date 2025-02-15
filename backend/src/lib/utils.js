@@ -9,12 +9,12 @@ const generateJWToken= (userId, res) => { /** might have to change userId to use
         expiresIn:"7d"
     }  );
 
-    // for security, performance, user experience
+    
     res.cookie("authToken", token, {
-        maxAge: 7 * 24 * 60 * 60 * 1000, // expires in 7 days in milliseconds
-        httpOnly: true, // prevents from XSS attacks
-        secure: process.env.NODE_ENV !== "development", // ensures cookies are only sent over HTTPS
-        sameSite: 'Strict', // prevents CSRF
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
+        httpOnly: true, 
+        secure: process.env.NODE_ENV !== "development",
+        sameSite: 'Strict', 
         path: "/"
 
     });

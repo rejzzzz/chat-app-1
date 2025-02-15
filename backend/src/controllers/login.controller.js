@@ -60,3 +60,12 @@ export const login = async (req, res) => {
         res.status(500).json({message: "Server crashed"});
     }
 };
+
+export const checkAuth = async(req , res ) => {
+    try {
+        return res.status(200).json(req.user);
+    } catch (error) {
+        console.log("error in checkAuth");
+        res.status(500).json({message: "Internal Server Error"});
+    }
+}
