@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema(
             unique: true,
             lowercase: true,
             trim: true,
-            match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/  // email validation regex
+            match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/  // email regex
         },
         firstName:{
             type: String,
@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema(
         password:{
             type: String,
             required: true,
-            minlength: 8    // strong password
+            minlength: 8    
 
         },
         userName:{
@@ -38,6 +38,10 @@ const userSchema = new mongoose.Schema(
         createdAt:{
             type: Date,
             default: Date.now
+        },
+        picture:{
+            type: String,
+            default: "",
         }
 
     },
